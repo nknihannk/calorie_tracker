@@ -1,0 +1,168 @@
+.progress-page {
+    padding: var(--space-lg) var(--space-md);
+    padding-bottom: 100px;
+}
+
+.progress-header {
+    margin-bottom: var(--space-lg);
+}
+
+.progress-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.progress-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+/* Stats Row */
+.progress-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+}
+
+.progress-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-md);
+    text-align: center;
+    transition: all var(--transition-fast);
+}
+
+.progress-stat:hover {
+    transform: translateY(-2px);
+}
+
+.progress-stat-icon {
+    font-size: 1.4rem;
+    margin-bottom: var(--space-xs);
+}
+
+.progress-stat-value {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.progress-stat-label {
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Chart Cards */
+.chart-card {
+    padding: var(--space-lg);
+    margin-bottom: var(--space-md);
+}
+
+.chart-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.chart-subtitle {
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+}
+
+.chart-container {
+    margin: 0 calc(-1 * var(--space-sm));
+}
+
+/* Custom Tooltip */
+.chart-tooltip {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border-radius: var(--radius-sm);
+    padding: var(--space-sm) var(--space-md);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.tooltip-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.tooltip-value {
+    font-size: 0.72rem;
+    font-weight: 500;
+    margin: 2px 0;
+}
+
+/* Today's Breakdown */
+.today-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+}
+
+.breakdown-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-xs);
+    align-items: center;
+}
+
+.breakdown-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.breakdown-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.breakdown-label {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.breakdown-right {
+    text-align: right;
+}
+
+.breakdown-value {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.breakdown-goal {
+    font-size: 0.7rem;
+    color: var(--text-tertiary);
+    margin-left: 2px;
+}
+
+.breakdown-bar {
+    grid-column: 1 / -1;
+    height: 5px;
+    border-radius: var(--radius-full);
+    background: rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+}
+
+.breakdown-bar-fill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: progressFill 0.8s ease-out;
+}

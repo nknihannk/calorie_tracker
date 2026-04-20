@@ -1,0 +1,211 @@
+.exercise-page {
+    padding: var(--space-lg) var(--space-md);
+    padding-bottom: 100px;
+}
+
+.exercise-header {
+    margin-bottom: var(--space-lg);
+}
+
+.exercise-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.exercise-subtitle {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+/* Summary */
+.exercise-summary {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-md);
+}
+
+.exercise-summary-icon {
+    font-size: 2rem;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-orange-bg);
+    border-radius: var(--radius-md);
+}
+
+.exercise-summary-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.exercise-summary-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.exercise-summary-value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--accent-orange);
+    line-height: 1.2;
+}
+
+.exercise-summary-value small {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.exercise-reset-btn {
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    border: 2px solid rgba(239, 83, 80, 0.2);
+    background: transparent;
+    color: var(--accent-red);
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: var(--font-family);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.exercise-reset-btn:hover {
+    background: var(--accent-red-bg);
+    border-color: var(--accent-red);
+}
+
+/* Custom Input */
+.custom-exercise {
+    padding: var(--space-lg);
+    margin-bottom: var(--space-lg);
+}
+
+.custom-exercise-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.custom-exercise-row {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.custom-exercise-input {
+    flex: 1;
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    border: 2px solid rgba(0, 0, 0, 0.06);
+    background: rgba(0, 0, 0, 0.02);
+    font-family: var(--font-family);
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    outline: none;
+    transition: all var(--transition-fast);
+}
+
+.custom-exercise-input:focus {
+    border-color: var(--accent-orange);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(255, 138, 101, 0.1);
+}
+
+.custom-add-btn {
+    padding: 10px 20px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, var(--accent-orange), #E64A19) !important;
+    box-shadow: 0 4px 12px rgba(255, 138, 101, 0.3) !important;
+}
+
+.custom-add-btn:hover:not(:disabled) {
+    box-shadow: 0 8px 24px rgba(255, 138, 101, 0.4) !important;
+}
+
+/* Exercise List */
+.exercise-list-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+}
+
+.exercise-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.exercise-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: var(--font-family);
+    transition: all var(--transition-fast);
+    width: 100%;
+}
+
+.exercise-item:hover {
+    transform: translateX(4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.exercise-item:active {
+    transform: scale(0.98);
+}
+
+.exercise-item-icon {
+    font-size: 1.5rem;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-orange-bg);
+    border-radius: var(--radius-md);
+}
+
+.exercise-item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.exercise-item-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.exercise-item-duration {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+}
+
+.exercise-item-cal {
+    text-align: right;
+}
+
+.exercise-item-cal-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent-orange);
+}
+
+.exercise-item-cal-unit {
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    display: block;
+}

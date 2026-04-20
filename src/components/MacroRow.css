@@ -1,0 +1,67 @@
+.macro-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
+    padding: 0 var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.macro-item {
+    padding: var(--space-md);
+    text-align: center;
+    transition: all var(--transition-fast);
+}
+
+.macro-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.macro-header {
+    margin-bottom: var(--space-xs);
+}
+
+.macro-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.macro-values {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 2px;
+    margin-bottom: var(--space-sm);
+}
+
+.macro-current {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.macro-separator {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+}
+
+.macro-goal {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.macro-bar-track {
+    height: 5px;
+    border-radius: var(--radius-full);
+    background: rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+}
+
+.macro-bar-fill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
