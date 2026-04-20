@@ -35,8 +35,8 @@ export default function Header() {
             <div className="header-content">
                 <div className="header-top">
                     <div>
-                        <h1 className="header-title">NutriTrack</h1>
-                        <p className="header-subtitle">Calorie & Nutrition Tracker</p>
+                        <h1 className="header-title">{user ? `Hello, ${user.displayName.split(' ')[0]}` : 'NutriTrack'}</h1>
+                        <p className="header-subtitle">{user ? "You're doing great today!" : "Calorie & Nutrition Tracker"}</p>
                     </div>
                     <div className="header-actions">
                         {user ? (
@@ -71,7 +71,7 @@ export default function Header() {
                             </div>
                         ) : (
                             <button className="btn-signin" onClick={login}>
-                                Sign In
+                                👋 Get Started
                             </button>
                         )}
                     </div>
