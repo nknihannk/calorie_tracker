@@ -9,8 +9,8 @@
     "providers": {
       "emailPassword": true,
       "googleSignIn": {
-        "oAuthBrandDisplayName": "NutriTrack App",
-        "supportEmail": "muhammedshadilmp7@gmail.com"
+        "oAuthBrandDisplayName": "NutriTrack v1",
+        "supportEmail": "nknihannk@gmail.com"
       }
     }
   }
