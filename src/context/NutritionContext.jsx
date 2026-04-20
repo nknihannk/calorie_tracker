@@ -1,4 +1,7 @@
-import { createContext, useContext, useReducer, useEffect } from 'react';
+import { createContext, useContext, useReducer, useEffect, useState } from 'react';
+import { auth, db } from '../firebase';
+import { onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth';
+import { doc, getDoc, setDoc, onSnapshot } from 'firebase/firestore';
 
 const NutritionContext = createContext();
 
@@ -166,6 +169,13 @@ function nutritionReducer(state, action) {
             };
         }
 
+        case 'SET_FULL_STATE': {
+            return {
+                ...state,
+                ...action.payload,
+            };
+        }
+
         default:
             return state;
     }
@@ -173,11 +183,55 @@ function nutritionReducer(state, action) {
 
 export function NutritionProvider({ children }) {
     const [state, dispatch] = useReducer(nutritionReducer, undefined, getInitialState);
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-    // Save to localStorage on state change
+    // Handle Auth changes
     useEffect(() => {
-        saveToStorage(state);
-    }, [state]);
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setUser(user);
+            setLoading(false);
+        });
+        return unsubscribe;
+    }, []);
+
+    // Sync from Firestore when user logs in
+    useEffect(() => {
+        if (!user) return;
+
+        const docRef = doc(db, 'users', user.uid);
+        const unsubscribe = onSnapshot(docRef, (docSnap) => {
+            if (docSnap.exists()) {
+                const cloudData = docSnap.data();
+                dispatch({ type: 'SET_FULL_STATE', payload: cloudData });
+            }
+        });
+
+        return unsubscribe;
+    }, [user]);
+
+    // Save to Firestore/localStorage on state change
+    useEffect(() => {
+        if (loading) return;
+
+        if (user) {
+            const docRef = doc(db, 'users', user.uid);
+            setDoc(docRef, state, { merge: true });
+        } else {
+            saveToStorage(state);
+        }
+    }, [state, user, loading]);
+
+    const login = async () => {
+        const provider = new GoogleAuthProvider();
+        try {
+            await signInWithPopup(auth, provider);
+        } catch (error) {
+            console.error('Login failed:', error);
+        }
+    };
+
+    const logout = () => signOut(auth);
 
     const selectedDayData = getDayData(state, state.selectedDate);
     const dayTotals = calculateDayTotals(selectedDayData);
@@ -206,6 +260,10 @@ export function NutritionProvider({ children }) {
     const value = {
         state,
         dispatch,
+        user,
+        loading,
+        login,
+        logout,
         goals: state.goals,
         selectedDate: state.selectedDate,
         selectedDayData,

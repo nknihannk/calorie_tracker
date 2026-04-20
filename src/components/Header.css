@@ -72,23 +72,44 @@
     margin-top: 2px;
 }
 
-.header-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
+.header-actions {
     display: flex;
     align-items: center;
-    justify-content: center;
-    border: 1.5px solid rgba(255, 255, 255, 0.25);
-    cursor: pointer;
-    transition: all var(--transition-fast);
 }
 
-.header-avatar:hover {
+.btn-signin {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 6px 14px;
+    border-radius: var(--radius-lg);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-signin:hover {
     background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+}
+
+.user-profile {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.user-profile:hover {
     transform: scale(1.05);
+}
+
+.user-avatar-img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    object-fit: cover;
 }
 
 /* Date Scroller */

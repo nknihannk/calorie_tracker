@@ -2,7 +2,7 @@ import { useNutrition } from '../context/NutritionContext';
 import './Header.css';
 
 export default function Header() {
-    const { selectedDate, dispatch } = useNutrition();
+    const { selectedDate, dispatch, user, login, logout } = useNutrition();
 
     const getDates = () => {
         const dates = [];
@@ -36,11 +36,16 @@ export default function Header() {
                         <h1 className="header-title">NutriTrack</h1>
                         <p className="header-subtitle">Calorie & Nutrition Tracker</p>
                     </div>
-                    <div className="header-avatar">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                            <circle cx="12" cy="7" r="4" />
-                        </svg>
+                    <div className="header-actions">
+                        {user ? (
+                            <div className="user-profile" onClick={logout} title="Click to Sign Out">
+                                <img src={user.photoURL} alt={user.displayName} className="user-avatar-img" />
+                            </div>
+                        ) : (
+                            <button className="btn-signin" onClick={login}>
+                                Sign In
+                            </button>
+                        )}
                     </div>
                 </div>
 
