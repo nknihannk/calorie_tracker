@@ -1,8 +1,10 @@
+import React from 'react';
 import { useNutrition } from '../context/NutritionContext';
 import './Header.css';
 
 export default function Header() {
     const { selectedDate, dispatch, user, login, logout } = useNutrition();
+    const [showUserMenu, setShowUserMenu] = React.useState(false);
 
     const getDates = () => {
         const dates = [];
@@ -38,8 +40,34 @@ export default function Header() {
                     </div>
                     <div className="header-actions">
                         {user ? (
-                            <div className="user-profile" onClick={logout} title="Click to Sign Out">
-                                <img src={user.photoURL} alt={user.displayName} className="user-avatar-img" />
+                            <div className="user-nav-container">
+                                <div className="user-profile" onClick={() => setShowUserMenu(!showUserMenu)}>
+                                    <img src={user.photoURL} alt={user.displayName} className="user-avatar-img" />
+                                </div>
+
+                                {showUserMenu && (
+                                    <div className="user-dropdown-overlay" onClick={() => setShowUserMenu(false)}>
+                                        <div className="user-dropdown" onClick={(e) => e.stopPropagation()}>
+                                            <div className="user-dropdown-header">
+                                                <img src={user.photoURL} alt={user.displayName} className="dropdown-avatar" />
+                                                <div className="dropdown-info">
+                                                    <p className="dropdown-name">{user.displayName}</p>
+                                                    <p className="dropdown-email">{user.email}</p>
+                                                </div>
+                                            </div>
+                                            <div className="user-dropdown-body">
+                                                <button className="dropdown-item" onClick={login}>
+                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
+                                                    Switch Account
+                                                </button>
+                                                <button className="dropdown-item logout-item" onClick={() => { logout(); setShowUserMenu(false); }}>
+                                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" /></svg>
+                                                    Log Out
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         ) : (
                             <button className="btn-signin" onClick={login}>

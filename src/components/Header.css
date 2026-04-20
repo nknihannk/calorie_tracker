@@ -72,6 +72,122 @@
     margin-top: 2px;
 }
 
+.user-nav-container {
+    position: relative;
+}
+
+.user-dropdown-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+    padding: 60px 20px;
+}
+
+.user-dropdown {
+    width: 260px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+    animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.user-dropdown-header {
+    padding: var(--space-md);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background: rgba(var(--primary-green-rgb), 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.dropdown-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.dropdown-name {
+    font-weight: 700;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dropdown-email {
+    font-size: 0.75rem;
+    color: var(--text-grey);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-dropdown-body {
+    padding: var(--space-xs);
+}
+
+.dropdown-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 12px var(--space-md);
+    border: none;
+    background: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.dropdown-item:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.dropdown-item svg {
+    color: var(--primary-green);
+}
+
+.logout-item {
+    color: #DC2626;
+    margin-top: 4px;
+}
+
+.logout-item:hover {
+    background: #FEF2F2;
+}
+
+.logout-item svg {
+    color: #DC2626;
+}
+
 .header-actions {
     display: flex;
     align-items: center;
