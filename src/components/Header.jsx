@@ -3,7 +3,7 @@ import { useNutrition } from '../context/NutritionContext';
 import './Header.css';
 
 export default function Header() {
-    const { selectedDate, dispatch, user, login, logout } = useNutrition();
+    const { selectedDate, dispatch, user, login, logout, loading } = useNutrition();
     const [showUserMenu, setShowUserMenu] = React.useState(false);
 
     const getDates = () => {
@@ -39,10 +39,14 @@ export default function Header() {
                         <p className="header-subtitle">{user ? "You're doing great today!" : "Calorie & Nutrition Tracker"}</p>
                     </div>
                     <div className="header-actions">
-                        {user ? (
+                        {loading ? (
+                            <div className="auth-skeleton"></div>
+                        ) : user ? (
                             <div className="user-nav-container">
                                 <div className="user-profile" onClick={() => setShowUserMenu(!showUserMenu)}>
-                                    <img src={user.photoURL} alt={user.displayName} className="user-avatar-img" />
+                                    <div className="avatar-wrapper">
+                                        <img src={user.photoURL} alt={user.displayName} className="user-avatar-img" />
+                                    </div>
                                 </div>
 
                                 {showUserMenu && (
