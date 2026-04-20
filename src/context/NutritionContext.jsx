@@ -3,6 +3,7 @@ import { auth, db } from '../firebase';
 import {
     onAuthStateChanged,
     signInWithRedirect,
+    getRedirectResult,
     GoogleAuthProvider,
     signOut
 } from 'firebase/auth';
@@ -197,6 +198,12 @@ export function NutritionProvider({ children }) {
             setUser(user);
             setLoading(false);
         });
+
+        // Catch the result of the redirect
+        getRedirectResult(auth).catch((error) => {
+            console.error("Redirect Login Error:", error);
+        });
+
         return unsubscribe;
     }, []);
 
