@@ -85,19 +85,21 @@ export default function LogModal({ mealType, onClose }) {
         setImageResult(null);
 
         try {
+            // Use gemini-1.5-flash which supports vision
             const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-            // Extract the base64 content
+            // Auto-detect mime type from base64 string
+            const mimeType = base64Data.split(';')[0].split(':')[1] || 'image/jpeg';
             const base64Content = base64Data.split(',')[1];
 
-            const prompt = "Identify the food in this image. Provide the nutrition info per standard serving. Return ONLY a JSON object in this format: { \"name\": \"Food Name\", \"calories\": 400, \"protein\": 15, \"carbs\": 50, \"fats\": 10 }. Do not include any other text or markdown formatting.";
+            const prompt = "Identify the food in this image. Estimated nutrition per standard serving. IMPORTANT: Return ONLY a raw JSON object: { \"name\": \"Food Name\", \"calories\": 400, \"protein\": 15, \"carbs\": 50, \"fats\": 10 }. No labels or markdown.";
 
             const result = await model.generateContent([
                 prompt,
                 {
                     inlineData: {
                         data: base64Content,
-                        mimeType: "image/jpeg"
+                        mimeType: mimeType
                     }
                 }
             ]);
